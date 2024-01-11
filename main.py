@@ -2,6 +2,7 @@ import pygame
 from pygame import *
 import sys
 from grid import Grid
+from blocks import *
 
 # Initialize pygame
 pygame.init()
@@ -22,7 +23,8 @@ clock = pygame.time.Clock()
 
 # Instantiate Grid class
 game_grid = Grid()
-game_grid.print_grid()
+
+block = TBlock()
 
 # Main game loop
 while True:
@@ -36,6 +38,8 @@ while True:
 
     # Draw grid
     game_grid.draw(screen)
+
+    block.draw(screen)
 
     # Update the display
     pygame.display.update()
