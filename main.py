@@ -1,8 +1,7 @@
 import pygame
 from pygame import *
 import sys
-from grid import Grid
-from blocks import *
+from game import Game
 
 # Initialize pygame
 pygame.init()
@@ -21,10 +20,11 @@ pygame.display.set_caption("Tetris")
 # Create a clock instance
 clock = pygame.time.Clock()
 
-# Instantiate Grid class
-game_grid = Grid()
+game = Game()
 
-block = TBlock()
+GAME_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(GAME_UPDATE, 200)
+
 
 # Main game loop
 while True:
@@ -32,14 +32,22 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                game.move_left()
+            if event.key == pygame.K_RIGHT:
+                game.move_right()
+            if event.key == pygame.K_DOWN:
+                game.move_down()
+            if event.key == pygame.K_UP:
+                game.rotate()
+        if event.type == GAME_UPDATE:
+            game.move_down()
 
     # Fill screen with color
     screen.fill(dark_blue)
 
-    # Draw grid
-    game_grid.draw(screen)
-
-    block.draw(screen)
+    game.draw(screen)
 
     # Update the display
     pygame.display.update()
