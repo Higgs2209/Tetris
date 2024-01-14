@@ -1,4 +1,4 @@
-class Colors:
+class Colours:
     # Set color values
     dark_grey = (26, 31, 40)
     green = (47, 230, 23)

@@ -1,5 +1,5 @@
 import pygame
-from colors import Colors
+from colours import Colours
 
 
 class Grid:
@@ -14,7 +14,7 @@ class Grid:
         self.grid = [[0 for j in range(self.num_cols)] for i in range(self.num_rows)]
 
         # Get cell colours
-        self.colors = Colors.get_cell_colors()
+        self.colors = Colours.get_cell_colors()
 
     def print_grid(self):
         for row in range(self.num_rows):
@@ -69,7 +69,7 @@ class Grid:
                 cell_value = self.grid[row][column]
 
                 # Create a grid of invisible rectangles for the grid
-                cell_rect = pygame.Rect(column * self.cell_size + 1, row * self.cell_size + 1,
+                cell_rect = pygame.Rect(column * self.cell_size + 11, row * self.cell_size + 11,
                                         self.cell_size - 1, self.cell_size - 1)
                 # Draw the grid
                 pygame.draw.rect(screen, self.colors[cell_value], cell_rect)
